@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>K&C FLERRADSUTRÄKNARE</title>
+	<meta charset="UTF-8">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+	<style>
+		body {
+		  background-image: url("https://i.imgur.com/KXu4VI6.png");
+		  background-size: 100% auto;
+		  font-family: 'Lato', sans-serif;
+		  font-weight: 800;
+		}
+		h1 {
+		  color: white;
+		  font-size: 3em;
+		  font-weight: 800;
+		  margin-bottom: 1rem;
+		  display: block;
+		}
+		h2 {
+		  color: white;
+		  font-size: 1.2em;
+		  font-weight: 800;
+		}
+		p {
+		  color: white;
+		  font-size: 1em;
+		  font-weight: 400;
+		}
+		label {
+		  color: white;
+		}
+		input {
+		  width: 15rem;
+		  padding: 0.5rem 1rem;
+		  margin: 8px 0;
+		  box-sizing: border-box;
+		  text-align: center;
+		  border: none;
+		  border-radius: 1rem;
+		}
+		#main {
+		  background-color: rgba(0, 0, 0, 0.8);
+		  width: 50%;
+		  height: 90vh;
+		  border-radius: 10px;
+		  padding: 1rem;
+		  align-content: centered;
+		  text-align: center;
+		  margin: auto;
+		}
+		#saknas {
+		  color: MediumAquaMarine;
+		}
+		#marginal {
+		  color: Tomato;
+		}
+		button {
+		  background-color: #4CAF50; /* Green */
+		  border: none;
+		  border-radius: 0.2rem;
+		  color: white;
+		  padding: 0.5rem 1rem;
+		  text-align: center;
+		  text-decoration: none;
+		  display: inline-block;
+		  font-size: 1rem;
+		}
+		button:hover {
+		  padding: 0.4rem 0.9rem;
+		  border: 0.1rem solid white;
+		}
+		table, th, td {
+		  border: 1px solid white;
+		  border-collapse: collapse;
+		  margin: auto;
+		  color: white;
+		  font-size: 0.8rem;
+		}
+		th, td {
+		  height: 2em;
+		  width: 2em;
+		}
+		#tableVert, #tableHori {
+		  border: 3px solid white;
+		}
+		#tableHori {
+		  color: MediumAquaMarine;
+		}
+		#tableVert {
+		  color: Tomato;
+		}
+</style>
+</head>
+<body>
+	<div id="main">
+		<h1>Flerradsuträknare</h1>
+
+		<input type="number" id="antalTrans" name="antalTrans" placeholder="TOTALA TRANSAKTIONER"><br><br>
+
+		<input type="number" id="flerrad" name="flerrad" placeholder="FLERRADS %"><br><br>
+
+		<button id="calcButton" type="button" onclick="main()">RÄKNA UT</button><br>
+		<h2>[RESULTA]</h2>
+		<p id="resultat">...</p>
+
+		<p> <u style="color:MediumAquaMarine;">FLERRAD</u> <button type='button' onclick='addFlerrad()'>+</button> <button type='button' onclick='subtFlerrad()' style="background-color:Tomato;">-</button> &nbsp;&nbsp;<u style="color:Tomato;">ENRAD</u> <button type='button' onclick='addEnrad()'>+</button> <button type='button' onclick='subtEnrad()'>-</button></p>
+		<table id="graf">
+		<tr>
+			<td id="tableVert"></td>
+			<td id="tableHori">+0</td>
+			<td id="tableHori">+1</td>
+			<td id="tableHori">+2</td>
+			<td id="tableHori">+3</td>
+			<td id="tableHori">+4</td>
+			<td id="tableHori">+5</td>
+			<td id="tableHori">+6</td>
+			<td id="tableHori">+7</td>
+			<td id="tableHori">+8</td>
+			<td id="tableHori">+9</td>
+		</tr>
+		<tr>
+			<td id="tableVert">+0</td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td id="tableVert">+1</td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td id="tableVert">+2</td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td id="tableVert">+3</td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td id="tableVert">+4</td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td id="tableVert">+5</td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td id="tableVert">+6</td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td id="tableVert">+7</td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td id="tableVert">+8</td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td id="tableVert">+9</td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
+	</table>
+	<p>Senaste uppdateringen: <i>[Enter] kommer nu antingen starta uträkningen eller byta till nästa ifyllningsfält.</i></p>
+	</div>
+	<script>	
+	//Utgångs Variablar
+	var flerradProcent;
+	var flerrad;
+	var antalTrans;
+	// xReq används för att räkna ut hur många trans saknas innan vi når 30%.
+	var flerradReq;
+	var antalTransReq;
+	//Antalet transaktioner som saknas
+	var missingMulti;
+	
+	// - = [ STARTAR UTRÄKNINGEN NÄR MAN KLICKAR PÅ RÄKNA UT KNAPPEN] = -
+	function main() {
+		//Kollar input på antalTrans
+		antalTrans = parseInt(document.getElementById("antalTrans").value)
+		//Kollar input på flerrad och räknar ut hur många av totala transaktioner är flerrad.
+		//Procent * 0.01 (gör om % till decimalform) * antalTrans
+		//Avrunda svaret till närmsta heltal (i och med att procenten vi ser är avrundad)
+		flerradProcent = document.getElementById("flerrad").value;
+		flerrad = Math.round(antalTrans * (flerradProcent*0.01));
+		
+		//RÄKNA UT
+		calcResult();
+	}
+	
+	// - = [ RÄKNAR UT OCH SKRIVER UT ANTALEN FLERRADS TRANSAKTIONER - KOLLAR ÄVEN HUR MÅNGA TRANS IFRÅN VI ÄR 30%] = -
+	function calcResult() {
+		// xReq används för att räkna ut hur många trans saknas innan vi når 30%.
+		flerradReq = flerrad;
+		antalTransReq = antalTrans;
+		//Om våran flerrad är minst 30%, kolla hur många enradskvitton ifrån 30% vi är.
+		if ((flerrad/antalTrans) >= 0.3) {
+			//Så länge våran flerrad är över eller lika med 30%, lägg till +1 trans och kolla om vi har hamnat under 30%
+			while ((flerrad/antalTransReq) >= 0.3) {
+				antalTransReq++;
+			}
+				//Räknar ut flerradsprocenten(samt avrundar till 2 decimaler) och skriver ut all information.
+				document.getElementById("resultat").innerHTML = "<b>Antal Transaktioner:</b> " + antalTrans + "<br><b>Varav flerrad:</b> " + flerrad + "<br><b>Flerrads %:</b> " + ((flerrad/antalTrans)*100).toFixed(2) + "%(<u id='saknas'>~" + Math.round((flerrad/antalTrans)*100) + "%</u>)<br><br>Du är <u id='marginal'>" + (antalTransReq-antalTrans) + "</u> enradskvitto(n) från att hamna under 30%";
+		}
+		else {
+			//Så länge våran flerrad är under 30%, lägg till +1 flerrad(och därmed +1 antalTrans) och kolla om vi har nått 30% igen
+			while ((flerradReq/antalTransReq) < 0.3) {
+				flerradReq++;
+				antalTransReq++;
+			}
+			//Räknar ut flerradsprocenten(samt avrundar till 2 decimaler) och skriver ut all information.
+			document.getElementById("resultat").innerHTML = "<b>Antal Transaktioner:</b> " + antalTrans + "<br><b>Varav flerrad:</b> " + flerrad + "<br><b>Flerrads %:</b> " + ((flerrad/antalTrans)*100).toFixed(2) + "%(<u id='marginal'>~" + Math.round((flerrad/antalTrans)*100) + "%</u>)<br><br>Du behöver <u id='saknas'>" + (antalTransReq-antalTrans) + "</u> till flerradskvitto(n) för att nå 30%.";
+		}
+		//Kör funktionen som uppdaterar tabellen
+		graph();
+	}
+	
+	// - = [ UPPDATERAR TABELLEN ] = -
+	function graph() {
+		//Laddar in HTML tabellen så att man kan hantera den mycket enklare via JavaScript
+		var graf = document.getElementById('graf');
+		
+		//Går igenom varje cell en i taget och räknar ut vilken procent flerrad man får vid specifierad antal Flerrads kvitton och Enrads kvitton
+		//Cell 1 > 10 på rad 1 (börjar alltså längst upp åt vänster och vi rör oss höger)
+		for(let onRow = 1; onRow <= 10; onRow++) {	 
+		
+			//Row 1 > 10 på rad 1 (börjar alltså längst upp vänster och rör oss ned)
+			for(let onCell = 1; onCell <= 10; onCell++) {
+				//Skriver ut i konsollen vad för uträkning som görs för den valda cellen
+				console.log("+" + (onRow-1) + " Enrad +" + (onCell-1) + " Flerrad = " + (flerrad+onCell-1)/(antalTrans+onCell+onRow-2) + " " + (flerrad+onCell-1) + "/" + (antalTrans+onCell+onRow-2));
+				//Om våran flerradsprocent är över 30%, gör den cellen grön
+				if(((flerrad+onCell-1)/(antalTrans+onCell+onRow-2)) >= 0.3) {
+					graf.rows[onRow].cells[onCell].style.backgroundColor = "MediumAquaMarine";
+				}
+				//Annars gör vi den röd, eftersom då måste procenten vara under 30%
+				else {
+					graf.rows[onRow].cells[onCell].style.backgroundColor = "Tomato";
+				}
+				//Skriver ut vilken procenten i den cellen
+				graf.rows[onRow].cells[onCell].innerHTML = Math.round((flerrad+onCell-1)/(antalTrans+onCell+onRow-2)*100) + "%"
+			}
+		//Här hoppar vi upp igen till "for(let onRow..." för att byta rad ett steg ned.
+		}
+	}
+	
+	// - = [ KÖR OM UTRÄKNINGEN MED UPPDATERADE VARIABLAR NÄR MAN KLICKAR PÅ +/- KNAPPARNA] = -
+	function addFlerrad() {
+	document.getElementById("antalTrans").value = "";
+	document.getElementById("flerrad").value = "";
+	flerrad++;
+	antalTrans++;
+	calcResult();
+	}
+	function subtFlerrad() {
+	document.getElementById("antalTrans").value = "";
+	document.getElementById("flerrad").value = "";
+	flerrad--;
+	antalTrans--;
+	calcResult();
+	}
+	function addEnrad() {
+	document.getElementById("antalTrans").value = "";
+	document.getElementById("flerrad").value = "";
+	antalTrans++;
+	calcResult();
+	}
+	function subtEnrad() {
+	document.getElementById("antalTrans").value = "";
+	document.getElementById("flerrad").value = "";
+	antalTrans--;
+	calcResult();
+	}
+	//GÖR SÅ ATT NÄR DU TRYCKER ENTER SÅ AKTIVERAS UTRÄKNAREN
+	//KOD NEDAN ÄR TAGEN IFRÅN ETT W3SCHOOLS EXEMPEL >>> https://www.w3schools.com/howto/howto_js_trigger_button_enter.asp
+	// Execute a function when the user presses a key on the keyboard
+	var input = document.getElementById("flerrad");
+	input.addEventListener("keypress", function(event) {
+	// If the user presses the "Enter" key on the keyboard
+	if (event.key === "Enter") {
+		// Cancel the default action, if needed
+		event.preventDefault();
+		// Trigger the button element with a click
+		document.getElementById("calcButton").click();
+	}
+	});
+	//KOPIERAD FRÅN OVAN MEN ANPASSAD FÖR ATT BYTA TILL FLERRADSFÄLTET
+	// Execute a function when the user presses a key on the keyboard
+	var nextInput = document.getElementById("antalTrans");
+	nextInput.addEventListener("keypress", function(event) {
+	// If the user presses the "Enter" key on the keyboard
+	if (event.key === "Enter") {
+		// Cancel the default action, if needed
+		event.preventDefault();
+		// Byt input focus till flerradsfältet
+		document.getElementById("flerrad").focus();
+	}
+	});
+</script>
+</body>
+</html>

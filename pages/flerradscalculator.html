@@ -105,7 +105,9 @@
 
 		<input type="number" id="antalTrans" name="antalTrans" placeholder="TOTALA TRANSAKTIONER"><br><br>
 
-		<input type="number" id="flerrad" name="flerrad" placeholder="FLERRADS %"><br><br>
+		<input type="number" id="flerrad" name="flerrad" placeholder="DIN FLERRADS %"><br><br>
+		
+		<input type="number" id="percent" name="percent" placeholder="30%"><br><br>
 
 		<button id="calcButton" type="button" onclick="main()">RÄKNA UT</button><br>
 		<h2>[RESULTAT]</h2>
@@ -263,6 +265,7 @@
 	var flerradProcent;
 	var flerrad;
 	var antalTrans;
+	var targetPercent;
 	// xReq används för att räkna ut hur många trans saknas innan vi når 30%.
 	var flerradReq;
 	var antalTransReq;
@@ -277,6 +280,7 @@
 		//Procent * 0.01 (gör om % till decimalform) * antalTrans
 		//Avrunda svaret till närmsta heltal (i och med att procenten vi ser är avrundad)
 		flerradProcent = document.getElementById("flerrad").value;
+		targetPercent = document.getElementById("percent").value*0.01;
 		flerrad = Math.round(antalTrans * (flerradProcent*0.01));
 		
 		//RÄKNA UT
@@ -289,9 +293,9 @@
 		flerradReq = flerrad;
 		antalTransReq = antalTrans;
 		//Om våran flerrad är minst 30%, kolla hur många enradskvitton ifrån 30% vi är.
-		if ((flerrad/antalTrans) >= 0.3) {
+		if ((flerrad/antalTrans) >= targetPercent) {
 			//Så länge våran flerrad är över eller lika med 30%, lägg till +1 trans och kolla om vi har hamnat under 30%
-			while ((flerrad/antalTransReq) >= 0.3) {
+			while ((flerrad/antalTransReq) >= targetPercent) {
 				antalTransReq++;
 			}
 				//Räknar ut flerradsprocenten(samt avrundar till 2 decimaler) och skriver ut all information.
@@ -299,7 +303,7 @@
 		}
 		else {
 			//Så länge våran flerrad är under 30%, lägg till +1 flerrad(och därmed +1 antalTrans) och kolla om vi har nått 30% igen
-			while ((flerradReq/antalTransReq) < 0.3) {
+			while ((flerradReq/antalTransReq) < targetPercent) {
 				flerradReq++;
 				antalTransReq++;
 			}
@@ -324,7 +328,7 @@
 				//Skriver ut i konsollen vad för uträkning som görs för den valda cellen
 				console.log("+" + (onRow-1) + " Enrad +" + (onCell-1) + " Flerrad = " + (flerrad+onCell-1)/(antalTrans+onCell+onRow-2) + " " + (flerrad+onCell-1) + "/" + (antalTrans+onCell+onRow-2));
 				//Om våran flerradsprocent är över 30%, gör den cellen grön
-				if(((flerrad+onCell-1)/(antalTrans+onCell+onRow-2)) >= 0.3) {
+				if(((flerrad+onCell-1)/(antalTrans+onCell+onRow-2)) >= targetPercent) {
 					graf.rows[onRow].cells[onCell].style.backgroundColor = "MediumAquaMarine";
 				}
 				//Annars gör vi den röd, eftersom då måste procenten vara under 30%

@@ -46,7 +46,7 @@
 		#main {
 		  background-color: rgba(0, 0, 0, 0.8);
 		  width: 50%;
-		  height: 90vh;
+		  height: 95vh;
 		  border-radius: 10px;
 		  padding: 1rem;
 		  align-content: centered;
@@ -372,7 +372,7 @@
 	//GÖR SÅ ATT NÄR DU TRYCKER ENTER SÅ AKTIVERAS UTRÄKNAREN
 	//KOD NEDAN ÄR TAGEN IFRÅN ETT W3SCHOOLS EXEMPEL >>> https://www.w3schools.com/howto/howto_js_trigger_button_enter.asp
 	// Execute a function when the user presses a key on the keyboard
-	var input = document.getElementById("flerrad");
+	var input = document.getElementById("percent");
 	input.addEventListener("keypress", function(event) {
 	// If the user presses the "Enter" key on the keyboard
 	if (event.key === "Enter") {
@@ -392,6 +392,18 @@
 		event.preventDefault();
 		// Byt input focus till flerradsfältet
 		document.getElementById("flerrad").focus();
+	}
+	});
+	//KOPIERAD FRÅN OVAN MEN ANPASSAD FÖR ATT BYTA TILL FLERRADSFÄLTET
+	// Execute a function when the user presses a key on the keyboard
+	var nextInput = document.getElementById("flerrad");
+	nextInput.addEventListener("keypress", function(event) {
+	// If the user presses the "Enter" key on the keyboard
+	if (event.key === "Enter") {
+		// Cancel the default action, if needed
+		event.preventDefault();
+		// Byt input focus till flerradsfältet
+		document.getElementById("percent").focus();
 	}
 	});
 </script>

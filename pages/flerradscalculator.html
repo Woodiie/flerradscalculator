@@ -308,7 +308,7 @@
 				antalTransReq++;
 			}
 				//Räknar ut flerradsprocenten(samt avrundar till 2 decimaler) och skriver ut all information.
-				document.getElementById("resultat").innerHTML = "<b>Antal Transaktioner:</b> " + antalTrans + "<br><b>Varav flerrad:</b> " + flerrad + "<br><b>Flerrads/Flersäljs %:</b> " + ((flerrad/antalTrans)*100).toFixed(2) + "%(<u id='saknas'>~" + Math.round((flerrad/antalTrans)*100) + "%</u>)(Om du inte subtraherade returer så kan den visa fel/avrundad ned betydligt)<br><br>Du är <u id='marginal'>" + (antalTransReq-antalTrans) + "</u> enradskvitto(n) från att hamna under ditt mål.";
+				document.getElementById("resultat").innerHTML = "<b>Antal Transaktioner:</b> " + antalTrans + "<br><b>Varav flerrad:</b> " + flerrad + "<br><b>Flerrads/Flersäljs %:</b> " + ((flerrad/antalTrans)*100).toFixed(2) + "%(<u id='saknas'>~" + Math.round((flerrad/antalTrans)*100) + "%</u>)<br>(Om du inte subtraherade returer så kan raden över visa fel/avrundad ned betydligt)<br><br>Du är <u id='marginal'>" + (antalTransReq-antalTrans) + "</u> enradskvitto(n) från att hamna under ditt mål.";
 		}
 		else {
 			//Så länge våran flerrad är under 30%, lägg till +1 flerrad(och därmed +1 antalTrans) och kolla om vi har nått 30% igen
@@ -317,7 +317,7 @@
 				antalTransReq++;
 			}
 			//Räknar ut flerradsprocenten(samt avrundar till 2 decimaler) och skriver ut all information.
-			document.getElementById("resultat").innerHTML = "<b>Antal Transaktioner:</b> " + antalTrans + "<br><b>Varav flerrad:</b> " + flerrad + "<br><b>Flerrads/Flersäljs  %:</b> " + ((flerrad/antalTrans)*100).toFixed(2) + "%(<u id='marginal'>~" + Math.round((flerrad/antalTrans)*100) + "%</u>)(Om du inte subtraherade returer så kan den visa fel/avrundad ned betydligt)<br><br>Du behöver <u id='saknas'>" + (antalTransReq-antalTrans) + "</u> till flerradskvitto/flersäljskvitto(n) för att nå ditt mål.";
+			document.getElementById("resultat").innerHTML = "<b>Antal Transaktioner:</b> " + antalTrans + "<br><b>Varav flerrad:</b> " + flerrad + "<br><b>Flerrads/Flersäljs  %:</b> " + ((flerrad/antalTrans)*100).toFixed(2) + "%(<u id='marginal'>~" + Math.round((flerrad/antalTrans)*100) + "%</u>)<br>(Om du inte subtraherade returer så raden över visa fel/avrundad ned betydligt)<br><br>Du behöver <u id='saknas'>" + (antalTransReq-antalTrans) + "</u> till flerradskvitto/flersäljskvitto(n) för att nå ditt mål.";
 		}
 		//Kör funktionen som uppdaterar tabellen
 		graph();

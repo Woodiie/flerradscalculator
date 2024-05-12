@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>FLERRADSUTRÄKNARE</title>
+	<title>FLERRADS/FLERSÄLJSUTRÄKNARE</title>
 	<meta charset="UTF-8">
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -102,10 +102,10 @@
 <body>
 	<div id="main">
 		<h1>Flerradsuträknare</h1>
-
+		<p>Uppdatering 2024-15-12 *Äntligen uppdaterad med rätt språk för flerrad/flersälj. *Funktioner anpassade för att korrekt avrunda ned istället för vanlig avrundning då det verkar som om flerraden avrundas ned, efter lite personlig observering. (Lite oklart hur det går till eftersom man kunde ha 30% och inte ibockad tidigare, men i vilket fall så utgår jag från det här nu så att den hällre överestimerar hur många du trans saknar istället för underestimerar). *Notering: För flersälj så är uträknaren naturligt mer noggrann då den inte behöver gissa lika mycket på hur många trans som är flerrad som tidigare, pga. att vi nu ser en decimal.</p>
 		<input type="number" id="antalTrans" name="antalTrans" placeholder="TOTALA TRANSAKTIONER"><br><br>
-
-		<input type="number" id="flerrad" name="flerrad" placeholder="DIN FLERRADS %"><br><br>
+		<p>Notering: För högre noggranhet subtrahera antal returer du har haft då de räknas med när du kollar antal trans för dagen.</p>
+		<input type="number" id="flerrad" name="flerrad" placeholder="DIN FLERRADS/FLERSÄLJ %"><br><br>
 		
 		<input type="number" id="percent" name="percent" placeholder="FLERRADSMÅL %"><br><br>
 
@@ -113,7 +113,7 @@
 		<h2>[ RESULTAT ]</h2>
 		<p id="resultat">. . .</p>
 
-		<p> <u style="color:MediumAquaMarine;">FLERRAD</u> <button type='button' onclick='addFlerrad()'>+</button> <button type='button' onclick='subtFlerrad()' style="background-color:Tomato;">-</button> &nbsp;&nbsp;<u style="color:Tomato;">ENRAD</u> <button type='button' onclick='addEnrad()'>+</button> <button type='button' onclick='subtEnrad()'>-</button></p>
+		<p> <u style="color:MediumAquaMarine;">FLERRAD/FLERSÄLJ</u> <button type='button' onclick='addFlerrad()'>+</button> <button type='button' onclick='subtFlerrad()' style="background-color:Tomato;">-</button> &nbsp;&nbsp;<u style="color:Tomato;">ENRAD</u> <button type='button' onclick='addEnrad()'>+</button> <button type='button' onclick='subtEnrad()'>-</button></p>
 		<table id="graf">
 		<tr>
 			<td id="tableVert"></td>
@@ -262,6 +262,7 @@
 	</div>
 	<script>	
 	//Utgångs Variablar
+	//Variablar namnget som flerrad funkar detsamma för flersälj. 
 	var flerradProcent;
 	var flerrad;
 	var antalTrans;
@@ -281,20 +282,20 @@
 		//Avrunda svaret till närmsta heltal (i och med att procenten vi ser är avrundad)
 		flerradProcent = document.getElementById("flerrad").value;
 		targetPercent = document.getElementById("percent").value*0.01;
-		flerrad = Math.round(antalTrans * (flerradProcent*0.01));
+		flerrad = Math.floor(antalTrans * (flerradProcent*0.01));
 		
 		//RÄKNA UT
 		calcResult();
 	}
 	
-	// - = [ RÄKNAR UT OCH SKRIVER UT ANTALEN FLERRADS TRANSAKTIONER - KOLLAR ÄVEN HUR MÅNGA TRANS IFRÅN VI ÄR 30%] = -
+	// - = [ RÄKNAR UT OCH SKRIVER UT ANTALEN FLERRADS/FLERSÄLJS TRANSAKTIONER - KOLLAR ÄVEN HUR MÅNGA TRANS IFRÅN VI ÄR 30%] = -
 	function calcResult() {
 		// xReq används för att räkna ut hur många trans saknas innan vi når 30%.
 		flerradReq = flerrad;
 		antalTransReq = antalTrans;
-		//Om våran flerrad är minst 30%, kolla hur många enradskvitton ifrån 30% vi är.
+		//Om våran flerrad är minst "targetPercent", kolla hur många enradskvitton ifrån 30% vi är.
 		if ((flerrad/antalTrans) >= targetPercent) {
-			//Så länge våran flerrad är över eller lika med 30%, lägg till +1 trans och kolla om vi har hamnat under 30%
+			//Så länge våran flerrad är över eller lika med "targetPercent", lägg till +1 trans och kolla om vi har hamnat under 30%
 			while ((flerrad/antalTransReq) >= targetPercent) {
 				antalTransReq++;
 			}
@@ -308,7 +309,7 @@
 				antalTransReq++;
 			}
 			//Räknar ut flerradsprocenten(samt avrundar till 2 decimaler) och skriver ut all information.
-			document.getElementById("resultat").innerHTML = "<b>Antal Transaktioner:</b> " + antalTrans + "<br><b>Varav flerrad:</b> " + flerrad + "<br><b>Flerrads %:</b> " + ((flerrad/antalTrans)*100).toFixed(2) + "%(<u id='marginal'>~" + Math.round((flerrad/antalTrans)*100) + "%</u>)<br><br>Du behöver <u id='saknas'>" + (antalTransReq-antalTrans) + "</u> till flerradskvitto(n) för att nå ditt mål.";
+			document.getElementById("resultat").innerHTML = "<b>Antal Transaktioner:</b> " + antalTrans + "<br><b>Varav flerrad:</b> " + flerrad + "<br><b>Flerrads %:</b> " + ((flerrad/antalTrans)*100).toFixed(2) + "%(<u id='marginal'>~" + Math.round((flerrad/antalTrans)*100) + "%</u>)<br><br>Du behöver <u id='saknas'>" + (antalTransReq-antalTrans) + "</u> till flerradskvitto/flersäljskvitto(n) för att nå ditt mål.";
 		}
 		//Kör funktionen som uppdaterar tabellen
 		graph();
@@ -326,12 +327,12 @@
 			//Row 1 > 10 på rad 1 (börjar alltså längst upp vänster och rör oss ned)
 			for(let onCell = 1; onCell <= 10; onCell++) {
 				//Skriver ut i konsollen vad för uträkning som görs för den valda cellen
-				console.log("+" + (onRow-1) + " Enrad +" + (onCell-1) + " Flerrad = " + (flerrad+onCell-1)/(antalTrans+onCell+onRow-2) + " " + (flerrad+onCell-1) + "/" + (antalTrans+onCell+onRow-2));
-				//Om våran flerradsprocent är över 30%, gör den cellen grön
+				console.log("+" + (onRow-1) + " Enrad +" + (onCell-1) + " Flerrad/Flersälj = " + (flerrad+onCell-1)/(antalTrans+onCell+onRow-2) + " " + (flerrad+onCell-1) + "/" + (antalTrans+onCell+onRow-2));
+				//Om våran flerradsprocent är över "targetPercent", gör den cellen grön
 				if(((flerrad+onCell-1)/(antalTrans+onCell+onRow-2)) >= targetPercent) {
 					graf.rows[onRow].cells[onCell].style.backgroundColor = "MediumAquaMarine";
 				}
-				//Annars gör vi den röd, eftersom då måste procenten vara under 30%
+				//Annars gör vi den röd, eftersom då måste procenten vara under "targetPercent"
 				else {
 					graf.rows[onRow].cells[onCell].style.backgroundColor = "Tomato";
 				}

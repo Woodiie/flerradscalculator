@@ -28,6 +28,11 @@
 		}
 		p {
 		  color: white;
+		  font-size: 0.1em;
+		  font-weight: 400;
+		}
+		#uppdatering {
+		  color: white;
 		  font-size: 1em;
 		  font-weight: 400;
 		}
@@ -46,7 +51,7 @@
 		#main {
 		  background-color: rgba(0, 0, 0, 0.8);
 		  width: 50%;
-		  height: 95vh;
+		  height: auto;
 		  border-radius: 10px;
 		  padding: 1rem;
 		  align-content: centered;
@@ -102,12 +107,14 @@
 <body>
 	<div id="main">
 		<h1>Flerradsuträknare</h1>
-		<p>Uppdatering 2024-15-12 *Äntligen uppdaterad med rätt språk för flerrad/flersälj. *Funktioner anpassade för att korrekt avrunda ned istället för vanlig avrundning då det verkar som om flerraden avrundas ned, efter lite personlig observering. (Lite oklart hur det går till eftersom man kunde ha 30% och inte ibockad tidigare, men i vilket fall så utgår jag från det här nu så att den hällre överestimerar hur många du trans saknar istället för underestimerar). *Notering: För flersälj så är uträknaren naturligt mer noggrann då den inte behöver gissa lika mycket på hur många trans som är flerrad som tidigare, pga. att vi nu ser en decimal.</p>
-		<input type="number" id="antalTrans" name="antalTrans" placeholder="TOTALA TRANSAKTIONER"><br><br>
+		<p id="uppdatering">Uppdatering 2024-15-12 *Äntligen uppdaterad med rätt språk för flerrad/flersälj. *Funktioner anpassade för att korrekt avrunda ned istället för vanlig avrundning då det verkar som om flerraden avrundas ned, efter lite personlig observering. Lite oklart hur det går till eftersom man kunde ha 30% och inte ibockad tidigare, men i vilket fall så utgår jag från det här nu så att den hällre överestimerar hur många du trans saknar istället för underestimerar.</p>
+		<br>
 		<p>Notering: För högre noggranhet subtrahera antal returer du har haft då de räknas med när du kollar antal trans för dagen.</p>
+		<p>Uträknaren funkar detsamma för flerrad som flersäljs uträkning.</p>
+		<input type="number" id="antalTrans" name="antalTrans" placeholder="TOTALA TRANSAKTIONER"><br><br>
 		<input type="number" id="flerrad" name="flerrad" placeholder="DIN FLERRADS/FLERSÄLJ %"><br><br>
 		
-		<input type="number" id="percent" name="percent" placeholder="FLERRADSMÅL %"><br><br>
+		<input type="number" id="percent" name="percent" placeholder="FLERRADS/FLERSÄLJSMÅL %"><br><br>
 
 		<button id="calcButton" type="button" onclick="main()">RÄKNA UT</button><br>
 		<h2>[ RESULTAT ]</h2>
@@ -300,7 +307,7 @@
 				antalTransReq++;
 			}
 				//Räknar ut flerradsprocenten(samt avrundar till 2 decimaler) och skriver ut all information.
-				document.getElementById("resultat").innerHTML = "<b>Antal Transaktioner:</b> " + antalTrans + "<br><b>Varav flerrad:</b> " + flerrad + "<br><b>Flerrads %:</b> " + ((flerrad/antalTrans)*100).toFixed(2) + "%(<u id='saknas'>~" + Math.round((flerrad/antalTrans)*100) + "%</u>)<br><br>Du är <u id='marginal'>" + (antalTransReq-antalTrans) + "</u> enradskvitto(n) från att hamna under ditt mål.";
+				document.getElementById("resultat").innerHTML = "<b>Antal Transaktioner:</b> " + antalTrans + "<br><b>Varav flerrad:</b> " + flerrad + "<br><b>Flerrads/Flersäljs %:</b> " + ((flerrad/antalTrans)*100).toFixed(2) + "%(<u id='saknas'>~" + Math.round((flerrad/antalTrans)*100) + "%</u>)<br><br>Du är <u id='marginal'>" + (antalTransReq-antalTrans) + "</u> enradskvitto(n) från att hamna under ditt mål.";
 		}
 		else {
 			//Så länge våran flerrad är under 30%, lägg till +1 flerrad(och därmed +1 antalTrans) och kolla om vi har nått 30% igen
@@ -309,7 +316,7 @@
 				antalTransReq++;
 			}
 			//Räknar ut flerradsprocenten(samt avrundar till 2 decimaler) och skriver ut all information.
-			document.getElementById("resultat").innerHTML = "<b>Antal Transaktioner:</b> " + antalTrans + "<br><b>Varav flerrad:</b> " + flerrad + "<br><b>Flerrads %:</b> " + ((flerrad/antalTrans)*100).toFixed(2) + "%(<u id='marginal'>~" + Math.round((flerrad/antalTrans)*100) + "%</u>)<br><br>Du behöver <u id='saknas'>" + (antalTransReq-antalTrans) + "</u> till flerradskvitto/flersäljskvitto(n) för att nå ditt mål.";
+			document.getElementById("resultat").innerHTML = "<b>Antal Transaktioner:</b> " + antalTrans + "<br><b>Varav flerrad:</b> " + flerrad + "<br><b>Flerrads/Flersäljs  %:</b> " + ((flerrad/antalTrans)*100).toFixed(2) + "%(<u id='marginal'>~" + Math.round((flerrad/antalTrans)*100) + "%</u>)<br><br>Du behöver <u id='saknas'>" + (antalTransReq-antalTrans) + "</u> till flerradskvitto/flersäljskvitto(n) för att nå ditt mål.";
 		}
 		//Kör funktionen som uppdaterar tabellen
 		graph();

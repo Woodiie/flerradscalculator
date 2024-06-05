@@ -21,12 +21,14 @@ function main() {
     targetPercent = document.getElementById("percent").value * 0.01;
     flerrad = Math.floor(antalTrans * (flerradProcent * 0.01));
 
+    // Hämta språk för klienten
+    const lang = localStorage.getItem('lang')
     //RÄKNA UT
-    calcResult();
+    calcResult(lang);
 }
 
 // - = [ RÄKNAR UT OCH SKRIVER UT ANTALEN FLERRADS/FLERSÄLJS TRANSAKTIONER - KOLLAR ÄVEN HUR MÅNGA TRANS IFRÅN VI ÄR 30%] = -
-function calcResult() {
+function calcResult(lang) {
     // xReq används för att räkna ut hur många trans saknas innan vi når 30%.
     flerradReq = flerrad;
     antalTransReq = antalTrans;
@@ -37,7 +39,10 @@ function calcResult() {
             antalTransReq++;
         }
         //Räknar ut flerradsprocenten(samt avrundar till 2 decimaler) och skriver ut all information.
-        document.getElementById("resultat").innerHTML = "<b>Antal Transaktioner:</b> " + antalTrans + "<br><b>Varav flerrad:</b> " + flerrad + "<br><b>Flerrads/Flersäljs %:</b> " + ((flerrad / antalTrans) * 100).toFixed(2) + "%(<u id='saknas'>~" + Math.round((flerrad / antalTrans) * 100) + "%</u>)<br>(Om du inte subtraherade returer så kan raden över visa fel/avrundad ned betydligt)<br><br>Du är <u id='marginal'>" + (antalTransReq - antalTrans) + "</u> enradskvitto(n) från att hamna under ditt mål.";
+        if (lang == 'se')
+            document.getElementById("resultat").innerHTML = "<b>Antal Transaktioner:</b> " + antalTrans + "<br><b>Varav flerrad:</b> " + flerrad + "<br><b>Flerrads/Flersäljs %:</b> " + ((flerrad / antalTrans) * 100).toFixed(2) + "%(<u id='saknas'>~" + Math.round((flerrad / antalTrans) * 100) + "%</u>)<br>(Om du inte subtraherade returer så kan raden över visa fel/avrundad ned betydligt)<br><br>Du är <u id='marginal'>" + (antalTransReq - antalTrans) + "</u> enradskvitto(n) från att hamna under ditt mål.";
+        else
+            document.getElementById("resultat").innerHTML = "<b>Antall transaksjoner:</b> " + antalTrans + "<br><b>Hvorav flerrad:</b> " + flerrad + "<br><b>Flerrad/Flersalgs %:</b> " + ((flerrad / antalTrans) * 100).toFixed(2) + "%(<u id='saknas'>~" + Math.round((flerrad / antalTrans) * 100) + "%</u>)<br>(Hvis du ikke trekker fra returer kan raden ovenfor vise feil.)<br><br>Du er <u id='marginal'>" + (antalTransReq - antalTrans) + "</u> enkelradskvittering(er) fra å ende under ditt mål.";
     }
     else {
         //Så länge våran flerrad är under 30%, lägg till +1 flerrad(och därmed +1 antalTrans) och kolla om vi har nått 30% igen
@@ -46,7 +51,10 @@ function calcResult() {
             antalTransReq++;
         }
         //Räknar ut flerradsprocenten(samt avrundar till 2 decimaler) och skriver ut all information.
-        document.getElementById("resultat").innerHTML = "<b>Antal Transaktioner:</b> " + antalTrans + "<br><b>Varav flerrad:</b> " + flerrad + "<br><b>Flerrads/Flersäljs  %:</b> " + ((flerrad / antalTrans) * 100).toFixed(2) + "%(<u id='marginal'>~" + Math.round((flerrad / antalTrans) * 100) + "%</u>)<br>(Om du inte subtraherade returer så kan raden över visa fel/avrundad ned betydligt)<br><br>Du behöver <u id='saknas'>" + (antalTransReq - antalTrans) + "</u> till flerradskvitto/flersäljskvitto(n) för att nå ditt mål.";
+        if (lang == 'se')
+            document.getElementById("resultat").innerHTML = "<b>Antal Transaktioner:</b> " + antalTrans + "<br><b>Varav flerrad:</b> " + flerrad + "<br><b>Flerrads/Flersäljs  %:</b> " + ((flerrad / antalTrans) * 100).toFixed(2) + "%(<u id='marginal'>~" + Math.round((flerrad / antalTrans) * 100) + "%</u>)<br>(Om du inte subtraherade returer så kan raden över visa fel/avrundad ned betydligt)<br><br>Du behöver <u id='saknas'>" + (antalTransReq - antalTrans) + "</u> till flerradskvitto/flersäljskvitto(n) för att nå ditt mål.";
+        else
+            document.getElementById("resultat").innerHTML = "<b>Antall transaksjoner:</b> " + antalTrans + "<br><b>Hvorav flerrad:</b> " + flerrad + "<br><b>Flerrads/Flersalgs  %:</b> " + ((flerrad / antalTrans) * 100).toFixed(2) + "%(<u id='marginal'>~" + Math.round((flerrad / antalTrans) * 100) + "%</u>)<br>(Hvis du ikke trekker fra returer kan raden ovenfor vise feil.)<br><br>Du trenger <u id='saknas'>" + (antalTransReq - antalTrans) + "</u> flere flerrads/flersalgskvittering(er) for å nå ditt mål.";
     }
     //Kör funktionen som uppdaterar tabellen
     graph();

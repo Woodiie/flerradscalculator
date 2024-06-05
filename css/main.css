@@ -115,3 +115,8 @@ td {
 #current {
     text-decoration: underline;
 }
+.switch{
+    margin-top: 10px;
+    background-color: #1975bc;
+    font-weight: bold;
+}

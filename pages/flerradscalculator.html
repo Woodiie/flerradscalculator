@@ -2,6 +2,8 @@
     const lang = localStorage.getItem('lang')
     if (lang == 'no')
         window.location.href = '/pages/no/flerradscalculator.html'
-    else
+    else{
+        localStorage.setItem('lang', 'se')
         window.location.href = '/pages/se/flerradscalculator.html'
+    }
 </script>

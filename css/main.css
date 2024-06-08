@@ -120,3 +120,11 @@ td {
     background-color: #1975bc;
     font-weight: bold;
 }
+img{
+display: flex;
+height: 0.5em;
+width: 0.5em:
+}
+.language{
+display: flex;
+}

@@ -122,9 +122,11 @@ td {
 }
 img{
 display: flex;
-height: 0.5em;
-width: 0.5em:
+flex-direction: row-reverse;
+height: 1.5em;
+width: 1.5em:
 }
 .language{
 display: flex;
+flex-direction: row-reverse;
 }

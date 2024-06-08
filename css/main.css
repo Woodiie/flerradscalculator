@@ -115,18 +115,27 @@ td {
 #current {
     text-decoration: underline;
 }
-.switch{
+
+.switch {
     margin-top: 10px;
     background-color: #1975bc;
     font-weight: bold;
 }
-img{
-display: flex;
-flex-direction: row-reverse;
-height: 2em;
-width: 2em:
+
+.top-bar {
+    display: flex;
+    justify-content: space-between;
 }
-.language{
-display: flex;
-flex-direction: row-reverse;
+
+.spacer {
+    width: 2em;
+}
+
+.lang-link {
+    height: min-content;
+}
+
+.lang-link img {
+    height: 2em;
+    aspect-ratio: 1/1;
 }

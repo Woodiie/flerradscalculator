@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+
+<html lang="se"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+	<title>Buffert A4 Mall</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Lato:wght@700;900&display=swap" rel="stylesheet">
+	
+	<link rel="stylesheet" href="/css/main.css">
+	<script src="/js/main.js"></script>
+	<script>
+		localStorage.setItem('lang', 'se')
+	</script>
+</head>
+	<body>
+		<div id="wrapper">
+		
+			<div id="printsheet">
+				<p id="rubrik" contenteditable="true">HÖRLURAR</p>
+				<p id="underrubrik" contenteditable="true">TRÅDLÖSA</p>
+					<img class="bild" id="bild1" src="https://www.kjell.com/globalassets/productimages/887437_24366_.jpg?ref=A003E300F7&format=jpg&w=960&h=960&mode=pad" alt="Error">
+					<img class="bild" id="bild2" src="https://www.kjell.com/globalassets/productimages/826137_23861_3.jpg?ref=C64CA5FEF2&format=jpg&w=960&h=960&mode=pad" alt="Error">
+					<img class="bild" id="bild3" src="https://www.kjell.com/globalassets/productimages/820745_23826_alla.jpg?ref=E27B9E853C&format=jpg&w=960&h=960&mode=pad" alt="Error">
+			</div>
+
+			<div id="controlpanel">
+				<br><button onclick="print()">Print</button><br>
+				<h1>INSTÄLLNINGAR</h1>
+				<h2><u>‎TEXT‎</u></h2>
+				<p><i>Ändra den genom att trycka på texten på mallen.</i></p>
+				<br>
+				<h2><u>FÄRG</u></h2>
+				<button class="colour" id="C1" onclick="changeColour('#ff0000')"></button>
+				<button class="colour" id="C2" onclick="changeColour('#ff8000')"></button>
+				<button class="colour" id="C3" onclick="changeColour('#ffff00')"></button>
+				<button class="colour" id="C4" onclick="changeColour('#00ff00')"></button>
+				<button class="colour" id="C5" onclick="changeColour('#00ffff')"></button>
+				<button class="colour" id="C6" onclick="changeColour('#0000ff')"></button>
+				<button class="colour" id="C7" onclick="changeColour('#8000ff')"></button>
+				<br><br>
+				<button class="colour" id="C11" onclick="changeColour('#ffadad')"></button>
+				<button class="colour" id="C12" onclick="changeColour('#ffd6a5')"></button>
+				<button class="colour" id="C13" onclick="changeColour('#fdffb6')"></button>
+				<button class="colour" id="C14" onclick="changeColour('#caffbf')"></button>
+				<button class="colour" id="C15" onclick="changeColour('#a0c4ff')"></button>
+				<button class="colour" id="C16" onclick="changeColour('#bdb2ff')"></button>
+				<button class="colour" id="C17" onclick="changeColour('#ffc6ff')"></button>
+				<br><br>
+				<button class="colour" id="C21" onclick="changeColour('#ef4e50')"></button>
+				<button class="colour" id="C22" onclick="changeColour('#ff9c62')"></button>
+				<button class="colour" id="C23" onclick="changeColour('#fff176')"></button>
+				<button class="colour" id="C24" onclick="changeColour('#14bfb9')"></button>
+				<button class="colour" id="C25" onclick="changeColour('#31cef8')"></button>
+				<button class="colour" id="C26" onclick="changeColour('#ae5cdb')"></button>
+				<button class="colour" id="C27" onclick="changeColour('#ff89c9')"></button>
+				<br><br>
+				<button class="colour" id="C31" onclick="changeColour('Tomato')"></button>
+				<button class="colour" id="C32" onclick="changeColour('Orange')"></button>
+				<button class="colour" id="C33" onclick="changeColour('Gold')"></button>
+				<button class="colour" id="C34" onclick="changeColour('MediumSeaGreen')"></button>
+				<button class="colour" id="C35" onclick="changeColour('DodgerBlue')"></button>
+				<button class="colour" id="C36" onclick="changeColour('SlateBlue')"></button>
+				<button class="colour" id="C37" onclick="changeColour('Violet')"></button>
+				<br><br><br>
+				<h2><u>BILDER</u></h2>
+				<h3>Hur man gör:</h3>
+				<p><i>Välj en bild på kjell.com > Höger-klicka på den > Kopiera bildaddress</i></p>
+				<button class="removeImage" onclick="removePicture(1)">X</button>
+				<input id="bildInput1" name="bild1" onkeyup="changePicture(1);" placeholder="https://www.kjell.com/globalassets/productimages/887437_24366_.jpg?ref=A003E300F7&format=jpg&w=960&h=960&mode=pad"><br>
+				<button class="removeImage" onclick="removePicture(2)">X</button>
+				<input id="bildInput2" name="bild2" onkeyup="changePicture(2);" placeholder="https://www.kjell.com/globalassets/productimages/826137_23861_3.jpg?ref=C64CA5FEF2&format=jpg&w=960&h=960&mode=pad"><br>
+				<button class="removeImage" onclick="removePicture(3)">X</button>
+				<input id="bildInput3" name="bild2" onkeyup="changePicture(3);" placeholder="https://www.kjell.com/globalassets/productimages/820745_23826_alla.jpg?ref=E27B9E853C&format=jpg&w=960&h=960&mode=pad">
+			</div>
+			
+		</div>
+	</body>
+</html>

@@ -46,7 +46,7 @@
 			float: left;
 		}
 		button:hover {
-			padding: 0.4rem 0.9rem;
+			padding: 0.9rem 1.9rem;
 			border: 0.1rem solid white;
 		}	
 		.removeImage {

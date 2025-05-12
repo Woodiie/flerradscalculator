@@ -1,0 +1,221 @@
+		body {
+			background-image: url("https://akamai.vgc.no/v2/images/db1a0de7-1adb-468b-ba4b-ead92adb808d?fit=crop&format=auto&h=910&w=1620&s=482a3c342308b87ab50296248a4c4b58b7160408");
+			background-size: 100% auto;
+			font-family: "Lato", sans-serif;
+		}
+		#wrapper {
+		background-color: rgba(0, 0, 0, 0.8);
+		width: auto;
+		height: 92vh;
+		border-radius: 10px;
+		padding: 1rem;
+		align-content: centered;
+		text-align: center;
+		margin: 2vh;
+		}
+		#printsheet {
+			aspect-ratio: 1.4142 / 1;
+			background-color: white;
+			height: 195mm;
+			width: auto;
+			border-radius: 15mm;
+			border: 15mm solid DodgerBlue;
+			margin: none;
+			float: left;
+			display: block;
+		}
+		#controlpanel {
+			padding-left: 1em;
+			width: auto;
+			float: left;
+			display: block;
+			color: white;
+			align-content: left;
+			text-align: left;
+		}
+		button {
+			background-color: #4CAF50;
+			border: none;
+			border-radius: 0.2rem;
+			color: white;
+			padding: 0.5rem 1rem;
+			text-align: center;
+			text-decoration: none;
+			display: inline-block;
+			font-size: 1rem;
+			float: left;
+		}
+		button:hover {
+			padding: 0.4rem 0.9rem;
+			border: 0.1rem solid white;
+		}	
+		.removeImage {
+			border: none;
+			border-radius: 0.2rem;
+			padding: 0.7rem 0.7rem;
+			text-align: center;
+			text-decoration: none;
+			display: inline-block;
+			font-size: 1rem;
+			float: left;
+			margin: 0.1rem;
+			background-color: #ef4e50;
+			margin-right: 0.5rem;
+		}
+		.removeImage:hover {
+			padding: 0.6rem 0.6rem;
+			border: 0.1rem solid white;
+		}		
+		.colour {
+			border: none;
+			border-radius: 0.2rem;
+			padding: 1rem 1rem;
+			text-align: center;
+			text-decoration: none;
+			display: inline-block;
+			font-size: 1rem;
+			float: left;
+			margin: 0.1rem;
+		}
+		.colour:hover {
+			padding: 0.9rem 0.9rem;
+			border: 0.1rem solid white;
+		}
+		#C1 {
+			background-color: #ff0000;
+		}
+		#C2 {
+			background-color: #ff8000;
+		}
+		#C3 {
+			background-color: #ffff00;
+		}
+		#C4 {
+			background-color: #00ff00;
+		}
+		#C5 {
+			background-color: #00ffff;
+		}
+		#C6 {
+			background-color: #0000ff;
+		}
+		#C7 {
+			background-color: #8000ff;
+		}
+		#C11 {
+			background-color: #ffadad;
+		}
+		#C12 {
+			background-color: #ffd6a5;
+		}
+		#C13 {
+			background-color: #fdffb6;
+		}
+		#C14 {
+			background-color: #caffbf;
+		}
+		#C15 {
+			background-color: #a0c4ff;
+		}
+		#C16 {
+			background-color: #bdb2ff;
+		}
+		#C17 {
+			background-color: #ffc6ff;
+		}
+		#C21 {
+			background-color: #ef4e50;
+		}
+		#C22 {
+			background-color: #ff9c62;
+		}
+		#C23 {
+			background-color: #fff176;
+		}
+		#C24 {
+			background-color: #14bfb9;
+		}
+		#C25 {
+			background-color: #31cef8;
+		}
+		#C26 {
+			background-color: #ae5cdb;
+		}
+		#C27 {
+			background-color: #ff89c9;
+		}
+		#C31 {
+			background-color: Tomato;
+		}
+		#C32 {
+			background-color: Orange;
+		}
+		#C33 {
+			background-color: Gold;
+		}
+		#C34 {
+			background-color: MediumSeaGreen;
+		}
+		#C35 {
+			background-color: DodgerBlue;
+		}
+		#C36 {
+			background-color: SlateBlue;
+		}
+		#C37 {
+			background-color: Violet;
+		}
+		#rubrik {
+			margin-top: 30mm;
+			text-align: center;
+			font-size: 30mm;
+			line-height: 1mm;
+			text-transform: uppercase;
+			font-weight: 900;
+		}
+		#underrubrik {
+			text-align: center;
+			font-size: 15mm;
+			line-height: 1mm;
+			text-transform: uppercase;
+			font-weight: 700;
+
+		}
+		.bild {
+			margin: auto;
+			height: 90mm;
+			justify-content: center;
+			float:left;
+			align-content: center;
+			display: flex;
+		}
+		input {
+			width: 40rem;
+			padding: 0.5rem 1rem;
+			margin: 8px 0;
+			box-sizing: border-box;
+			text-align: center;
+			border: none;
+			border-radius: 1rem;
+		}
+		@media print {
+			#controlpanel {
+				display: none;
+			}
+			#wrapper {
+				visibility: hidden;
+				margin: none;
+				padding: 0;
+			}
+			#printsheet {
+				visibility: visible;
+				height: 189mm;
+				width: 297mm;
+				padding: none;
+				marign: none;
+			}
+			@page {
+  				size: A4 landscape;
+				margin: 15mm;
+			}
+		}

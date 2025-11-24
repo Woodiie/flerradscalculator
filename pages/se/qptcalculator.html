@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="se">
+
+<head>
+	<title>QPT CALCULATOR</title>
+	<meta charset="UTF-8">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+	<link rel="icon" type="image/png" href="../../media/flerradsCalcIcon.png">
+	<link rel="stylesheet" href="/css/qpt.css">
+	<script src="/js/qpt.js"></script>
+	<script src="/js/keywatcherQpt.mjs" defer></script>
+	<script>
+		localStorage.setItem('lang', 'se')
+	</script>
+</head>
+
+<body>
+	<div id="main">
+		<div class="top-bar">
+			<div class="spacer"></div>
+			<h1>QPT Calculator </h1>
+			<a href="/pages/no/qptcalculator.html" class="lang-link"><img src="/media/norway.png"></img></a>
+		</div>
+		<div class="segment">
+			<h2>[ Siffror ]</h2>
+			<p>______________________________________________________________</p>
+			<a class="inputBox">Transaktioner<br>
+			<input type="number" id="transactions" name="transactions" placeholder="43" value="43">
+			</a>
+			<a class="inputBox">Din QPT<br>
+			<input type="number" id="qpt" name="qpt" placeholder="1,33" value="1.33">
+			</a>
+			<a class="inputBox">QPT Mål<br>
+			<input type="number" id="qptTarget" name="qptTarget" placeholder="1,5" value="1.5">
+			</a><br><br>
+			<button id="calcButton" type="button" onclick="main()">Calculate</button><br>
+			<p>_________________ [ Input ] _________________</p>
+			<a class="buttonTitle">Transaktioner</><br>
+			<p class="result" id="resultTransactions">?</p>
+			</a>
+			<a class="buttonTitle">Din QPT<br>
+			<p class="result" id="resultQpt">?</p>
+			</a>
+			<a class="buttonTitle">QPT Mål<br>
+			<p class="result" id="resultQptTarget">?</p>
+			</a>
+			<p>________________ [ Produkter ] ________________</p>
+			<a class="buttonTitle">Produkter Sålda<br>
+			<p class="result" id="resultItems">?</p>
+			</a>
+			<a class="buttonTitle">Produkter Sålda Mål<br>
+			<p class="result" id="resultItemsTarget">?</p>
+			</a>
+			<p>______________________________________________________________</p>
+		</div>
+		<div class="segment">
+			<h2>[ Analys ]</h2>
+			<p>______________________________________________________________</p>
+			<p class="outputText" id="resultTransactionsTarget">Om du tar 10 transaktioner till...</p><br>
+			<input type="range" min="1" max="50" value="10" class="slider" id="transactionsForward" oninput="resultsAnalyze()"><br>
+			<a class="outputText" id="resultItemsTotal">Så behöver du sälja 20 produkter sammanlagt.</a>
+			<p>______________________________________________________________</p>
+		</div>
+		
+	<br><p><a href="https://github.com/Woodiie/flerradscalculator" target="_blank">[ Github Repository ]</a></p>
+	</div>
+</body>
+
+</html>

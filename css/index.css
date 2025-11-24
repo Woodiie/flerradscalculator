@@ -1,0 +1,66 @@
+body {
+    background-image: url("../media/blueBack.jpg");
+    background-size: 100% auto;
+    font-family: 'Lato', sans-serif;
+    font-weight: 800;
+}
+
+h1 {
+    color: white;
+    font-size: 3em;
+    font-weight: 800;
+    margin-bottom: 1rem;
+    display: block;
+}
+
+h2 {
+    color: white;
+    font-size: 1.2em;
+    font-weight: 800;
+}
+
+p {
+    color: white;
+    font-size: 1em;
+    font-weight: 400;
+}
+
+#uppdatering {
+    color: AliceBlue;
+    font-size: 1em;
+    font-weight: 400;
+    font-style: italic;
+}
+
+#main {
+    background-color: rgba(0, 0, 0, 0.8);
+    width: 50%;
+    height: auto;
+    border-radius: 10px;
+    padding: 1rem;
+    align-content: centered;
+    text-align: center;
+    margin: auto;
+}
+
+button {
+    background-color: #4CAF50;
+    /* Green */
+    border: none;
+    border-radius: 0.2rem;
+    color: white;
+    font-weight: 800;
+    padding: 0.5rem 1rem;
+	margin-left: 3rem;
+	margin-right: 3rem;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1.5rem;
+    border: 0.2rem solid transparent;
+}
+
+button:hover {
+    border: 0.2rem solid white;
+	transition: border 0.3s ease-in;
+}

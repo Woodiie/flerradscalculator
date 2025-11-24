@@ -49,7 +49,7 @@ function resultsAnalyze() {
 			document.getElementById("resultTransactionsTarget").innerHTML = "Om du tar " + transactionsForward + " transaktioner till...";
 
 			itemsRequired = Math.round((transactions+transactionsForward)*qptTarget);
-			document.getElementById("resultItemsTotal").innerHTML = "Så behöver du sälja " + (itemsRequired-itemsSold) + " varor sammanlagt.";
+			document.getElementById("resultItemsTotal").innerHTML = "Så behöver du sälja " + (itemsRequired-itemsSold) + " varor sammanlagt för att nå ditt mål.";
 		}
 		else {
 			console.log("here");
